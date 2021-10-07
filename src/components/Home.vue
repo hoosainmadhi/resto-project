@@ -1,15 +1,25 @@
 <template>
+<Header/>
     <h1>Hello Welcome to Home Page</h1>
 </template>
 
 
 <script>
+
+import Header from './Header.vue'
+
 export default {
     name:'Home',
 
-  mounted(){
+    components:{
+        Header
+    },
+
+  mounted()
+  {
     let user=localStorage.getItem('user-info');
-    if(!user){
+    if(!user)
+    {
         this.$router.push({name: 'SignUp'});
 
     }
