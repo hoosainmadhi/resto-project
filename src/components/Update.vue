@@ -5,7 +5,7 @@
        <input type="text" name="name" placeholder="Enter Name" v-model="restuarant.name">
        <input type="text" name="address" placeholder="Enter Address" v-model="restuarant.address">
        <input type="text" name="contact" placeholder="Enter Contact" v-model="restuarant.contact">
-       <button type="button" v-on:click="addRestuarant">Update Restuarant</button>
+       <button type="button" v-on:click="updateRestuarant">Update Restuarant</button>
      </form>
 </template>
 
@@ -29,6 +29,23 @@ export default {
         }
       }
     },
+    methods:{
+      async updateRestuarant(){
+      console.warn(this.restuarant);
+      const result = await axios.put("http://localhost:3000/restuarant/"+this.$route.params.id,{
+        name: this.restuarant.name,
+        address: this.restuarant.address,
+        contact: this.restuarant.contact
+      });
+
+      if (result.status==200)
+      {
+        this.$router.push({name:'Home'})
+      }
+      console.warn(result);        
+      }
+      
+    },
 
   async mounted()
   {
@@ -42,6 +59,7 @@ export default {
     const result = await axios.get('http://localhost:3000/restuarant/'+this.$route.params.id);
     console.warn(result);
     this.restuarant=result.data; //fill   form with  data
+
 
   }
 }
