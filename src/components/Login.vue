@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="../assets/resto.png" />
-  <h1>Login Up</h1>
+  <h1>Login</h1>
   <div class="login">
     <input type="text" v-model="email" placeholder="Email" />
     <input type="password" v-model="password" placeholder="password" />
