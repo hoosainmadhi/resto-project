@@ -28,7 +28,7 @@ export default {
   methods:{
       async signUp(){
         console.warn("signUp",this.name, this.email, this.password);
-        let result =  await axios.post("http://localhost:3000/user",{
+        let result =  await axios.post("http://localhost:3000/users",{
             name: this.name,
             password: this.password,
             email: this.email
